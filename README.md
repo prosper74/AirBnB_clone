@@ -3,11 +3,27 @@
 ### Description:
 AirBnB Clone - The Console is a command-line interface (CLI) application that serves as the backend for a simplified version of the popular online accommodation booking platform, AirBnB. This project aims to replicate some of the core functionalities of AirBnB, allowing users to manage and interact with properties, users, and booking information through a text-based interface.
 
+### Command interpreter
+The command interpreter for the AirBnB Clone project serves as the primary interface for users to interact with the backend functionality of the application. It provides a text-based environment where users can execute commands to perform various operations related to managing properties, users, bookings, and more.
+
+### How it Works:
+- Upon launching the command interpreter, users are greeted with a prompt indicating that the console is ready to accept commands.
+- Users input commands along with any required arguments or options, then press Enter to execute the command.
+- The interpreter processes the command, performs the specified operation, and provides feedback or output based on the result.
+
 ### Features:
 - Property Management: Users can create, update, delete, and view properties.
 - User Management: Administrators can manage user accounts, including creation, deletion, and permission management.
 - Booking Management: Users can make bookings for properties and view booking details.
 - Search and Filter: Users can search for properties based on various criteria such as location, price, amenities, etc.
+
+### Example:
+Here's an example of how a user might interact with the command interpreter:
+
+1. User types create user JohnDoe john@example.com password123 and presses Enter to create a new user with the name "JohnDoe," email "john@example.com," and password "password123."
+2. User types list users and presses Enter to view a list of all users in the system, including the newly created user "JohnDoe."
+3. User types book property 1234 2024-03-01 2024-03-05 and presses Enter to book a property with ID 1234 for the dates March 1st, 2024 to March 5th, 2024.
+4. User types search property --location New York and presses Enter to search for properties located in New York.
 
 ### Technologies Used:
 - Python: The core programming language used for developing the backend logic.
