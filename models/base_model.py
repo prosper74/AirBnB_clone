@@ -24,17 +24,6 @@ class BaseModel:
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
 
-        date_formatter = "%Y-%m-%dT%H:%M:%S.%f"
-
-        if len(kwargs) != 0:
-            for k, v in kwargs.items():
-                if k in ('created_at', 'updated_at'):
-                    self.__dict__[k] = datetime.strptime(v, date_formatter)
-                else:
-                    self.__dict__[k] = v
-        else:
-            "Create a new storage object for self - models.storage.new(self)"
-
     def __str__(self):
         """print: [<class name>] (<self.id>) <self.__dict__>"""
 
