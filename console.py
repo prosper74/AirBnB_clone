@@ -61,12 +61,12 @@ class HBNBCommand(cmd.Cmd):
                     s_c = c_l[1] + " " + c_l[0]
                     if ll_cc[1] == ")":
                         return s_c
-                    elif len(l_arg) == 3 and l_arg[2] == ")":
+                    if len(l_arg) == 3 and l_arg[2] == ")":
                         return s_c + " " + l_arg[1]
-                    elif len(l_upd) == 7 and l_upd[6] == ")":
+                    if len(l_upd) == 7 and l_upd[6] == ")":
                         return s_c + " " + l_arg[1] + " "\
                             + l_upd[3] + " \"" + l_upd[5] + "\""
-                    elif len(l_last):
+                    if len(l_last):
                         try:
                             dict_up = json.loads(
                                 str("{" + l_last[1][:-1].replace("'", "\"")))
@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
                             ans = c_l[1] + " " + s_c + " \"" + \
                                 k + "\" \"" + str(v) + "\""
                             return ans
-                        except:
+                        except ImportError:
                             return line
                     else:
                         return line
