@@ -6,6 +6,7 @@ It defines all common attributes/methods for other classes
 
 from datetime import datetime
 import uuid
+from models.engine.file_storage import FileStorage
 
 
 class BaseModel:
@@ -33,7 +34,7 @@ class BaseModel:
                 else:
                     self.__dict__[k] = v
         else:
-            "Create a new storage object for self - models.storage.new(self)"
+            FileStorage.new(self)
 
     def __str__(self):
         """print: [<class name>] (<self.id>) <self.__dict__>"""
@@ -45,10 +46,9 @@ class BaseModel:
         """
         Method to update public instance attribute
         'updated_at' with the current datetime
-
-        Save to storage later - models.storage.save()
         """
         self.updated_at = datetime.now()
+        FileStorage.save()
 
     def to_dict(self):
         """
