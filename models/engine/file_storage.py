@@ -5,6 +5,11 @@ It serializes instances to a JSON file and
 deserializes JSON file to instances
 """
 import json
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 from models.user import User
 
 
@@ -20,7 +25,12 @@ class FileStorage:
     __objects = {}
 
     CLASSES = {
-        'User': User
+        'User': User,
+        'State': State,
+        'City': City,
+        'Amenity': Amenity,
+        'Place': Place,
+        'Review': Review
     }
 
     def all(self):
@@ -51,7 +61,8 @@ class FileStorage:
                 data = json.load(file)
                 for key, value in data.items():
                     class_name, _ = key.split('.')
-                    obj = globals()[class_name](**value)
+                    cls = self.CLASSES[class_name]
+                    obj = cls(**value)
                     self.__objects[key] = obj
         except FileNotFoundError:
             pass
