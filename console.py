@@ -8,6 +8,7 @@ from ast import literal_eval
 import cmd
 import json
 from models.base_model import BaseModel
+from models.user import User
 from models.engine.file_storage import FileStorage
 
 
@@ -41,7 +42,11 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         try:
-            obj = literal_eval(arg)()
+            if arg == 'User':
+                obj = User()
+            else:
+                obj = literal_eval(arg)()
+
             storage = FileStorage()
             storage.new(obj)
             storage.save()
@@ -142,7 +147,7 @@ class HBNBCommand(cmd.Cmd):
                     attr_value = args[3]
                     if hasattr(obj_dict, attr_name):
                         setattr(obj_dict, attr_name, attr_value)
-                        storage.save()  # Save changes to the JSON file
+                        storage.save()
                     else:
                         print("** attribute doesn't exist **")
         except IndexError:
